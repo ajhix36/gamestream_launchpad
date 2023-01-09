@@ -2,6 +2,7 @@
 import win32api
 import win32.lib.win32con as win32con
 import win32gui
+import win32com.client
 import win32event
 import pywintypes
 import pyautogui
@@ -201,6 +202,8 @@ else:
                     print("Maximizing", cfg_launcher_window_name)
                     win32gui.ShowWindow(i[0], 3)
                 print("Focusing", cfg_launcher_window_name)
+                shell = win32com.client.Dispatch("WScript.Shell")
+                shell.SendKeys('%')
                 win32gui.SetForegroundWindow(i[0])
                 launcher_focused = True
                 launcher_window_handle = i[0]
